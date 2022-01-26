@@ -1,0 +1,29 @@
+{
+  "name": "shadowrocket-hosts",
+  "version": "0.1.0",
+  "description": "Hosts block ads for Shadowrocket",
+  "main": "api/index.ts",
+  "scripts": {
+    "develop": "vercel dev"
+  },
+  "dependencies": {
+    "got": "^11.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^23.1.2"
+  },
+  "homepage": "https://shadowrocket.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nghiepit/shadowrocket-hosts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nghiepit/shadowrocket-hosts/issues"
+  },
+  "keywords": [
+    "hosts vn",
+    "shadowrocket"
+  ],
+  "author": "Nghiep <me@nghiepit.dev>",
+  "license": "MIT"
+}
