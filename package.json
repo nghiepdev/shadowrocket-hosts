@@ -4,7 +4,8 @@
   "description": "Hosts block ads for Shadowrocket",
   "main": "api/index.ts",
   "scripts": {
-    "develop": "vercel dev"
+    "develop": "vercel dev",
+    "deploy": "vercel deploy --prod"
   },
   "dependencies": {
     "got": "^11.0.0",
@@ -14,7 +15,7 @@
   "devDependencies": {
     "vercel": "^23.1.2"
   },
-  "homepage": "https://shadowrocket.vercel.app",
+  "homepage": "https://shadowrocket-hosts.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nghiepit/shadowrocket-hosts.git"

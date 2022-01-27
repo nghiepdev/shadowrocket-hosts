@@ -7,7 +7,7 @@
 Import hosts file configuration.
 
 ```bash
-https://shadowrocket.vercel.app
+https://shadowrocket-hosts.vercel.app
 ```
 
 See more step-by-step instructions [here](https://github.com/bigdargon/hostsVN/wiki/Shadowrocket)
