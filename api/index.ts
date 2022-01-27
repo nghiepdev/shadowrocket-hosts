@@ -5,12 +5,12 @@ import pupa from 'pupa';
 import readPkg from 'read-pkg';
 import type {VercelRequest, VercelResponse} from '@vercel/node';
 
-import {Repository} from '../types';
+import {Repository} from '../src/types';
 
 const REPO = 'bigdargon/hostsVN';
 
 const shadowrocketTemplate = fs.readFileSync(
-  path.resolve('shadowrocket.conf.template'),
+  path.resolve('src/shadowrocket.conf.template'),
   'utf-8'
 );
 
