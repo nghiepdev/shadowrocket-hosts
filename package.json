@@ -7,7 +7,9 @@
     "develop": "vercel dev"
   },
   "dependencies": {
-    "got": "^11.0.0"
+    "got": "^11.0.0",
+    "pupa": "^2.0.0",
+    "read-pkg": "^5.0.0"
   },
   "devDependencies": {
     "vercel": "^23.1.2"
