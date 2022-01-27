@@ -1,6 +1,12 @@
 {
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/config"
+    }
+  ],
   "functions": {
-    "api/index.ts": {
+    "api/config.ts": {
       "includeFiles": "*"
     }
   }
