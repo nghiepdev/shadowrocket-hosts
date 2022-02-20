@@ -7,7 +7,7 @@
   ],
   "functions": {
     "api/api.ts": {
-      "includeFiles": "*"
+      "includeFiles": "package.json"
     }
   }
 }
