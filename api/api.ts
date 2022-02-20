@@ -2,10 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import pupa from 'pupa';
 import readPkg from 'read-pkg';
-import {Octokit} from 'octokit';
 import type {VercelRequest, VercelResponse} from '@vercel/node';
 
-const octokit = new Octokit();
+import octokit from '../src/octokit';
+import {REPOSITORY_TEMPLATE} from '../src/config';
 
 const shadowrocketTemplate = fs.readFileSync(
   path.resolve('src/shadowrocket.conf.template'),
@@ -21,17 +21,17 @@ export default async function handler(
   const {
     data: {pushed_at},
   } = await octokit.rest.repos.get({
-    owner: 'bigdargon',
-    repo: 'hostsVN',
+    owner: REPOSITORY_TEMPLATE.owner,
+    repo: REPOSITORY_TEMPLATE.repo,
   });
 
   const hostsVNResponse = await octokit.rest.repos.getContent({
-    owner: 'bigdargon',
-    repo: 'hostsVN',
+    owner: REPOSITORY_TEMPLATE.owner,
+    repo: REPOSITORY_TEMPLATE.repo,
     mediaType: {
       format: 'raw',
     },
-    path: 'option/hostsVN-shadowrocket.conf',
+    path: REPOSITORY_TEMPLATE.path,
   });
 
   const hostsVN = hostsVNResponse.data.toString();
