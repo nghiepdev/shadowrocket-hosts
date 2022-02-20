@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/api/config"
+      "destination": "/api/api"
     }
   ],
   "functions": {
-    "api/config.ts": {
+    "api/api.ts": {
       "includeFiles": "*"
     }
   }
