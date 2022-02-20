@@ -1,13 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import got from 'got';
 import pupa from 'pupa';
 import readPkg from 'read-pkg';
+import {Octokit} from 'octokit';
 import type {VercelRequest, VercelResponse} from '@vercel/node';
 
-import {Repository} from '../src/types';
-
-const REPO = 'bigdargon/hostsVN';
+const octokit = new Octokit();
 
 const shadowrocketTemplate = fs.readFileSync(
   path.resolve('src/shadowrocket.conf.template'),
@@ -20,15 +18,23 @@ export default async function handler(
 ) {
   const {homepage} = await readPkg();
 
-  const {pushed_at} = await got
-    .get(`https://api.github.com/repos/${REPO}`)
-    .json<Repository>();
+  const {
+    data: {pushed_at},
+  } = await octokit.rest.repos.get({
+    owner: 'bigdargon',
+    repo: 'hostsVN',
+  });
 
-  const hostsVN = await got
-    .get(
-      `https://raw.githubusercontent.com/${REPO}/master/option/hostsVN-shadowrocket.conf`
-    )
-    .text();
+  const hostsVNResponse = await octokit.rest.repos.getContent({
+    owner: 'bigdargon',
+    repo: 'hostsVN',
+    mediaType: {
+      format: 'raw',
+    },
+    path: 'option/hostsVN-shadowrocket.conf',
+  });
+
+  const hostsVN = hostsVNResponse.data.toString();
 
   const [rules] = hostsVN.match(/(?<=\[Rule\]\s).*(?=\[Host)/s) ?? [];
   const [rewrites] =

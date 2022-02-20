@@ -8,12 +8,12 @@
     "deploy": "vercel deploy --prod"
   },
   "dependencies": {
-    "got": "^11.0.0",
+    "octokit": "^1.7.1",
     "pupa": "^2.0.0",
     "read-pkg": "^5.0.0"
   },
   "devDependencies": {
-    "vercel": "^23.1.2"
+    "vercel": "^24.0.0"
   },
   "homepage": "https://shadowrocket-hosts.vercel.app",
   "repository": {
