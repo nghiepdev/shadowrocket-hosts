@@ -16,6 +16,9 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
+  const includeAdwayRules = request.query.adway !== '0';
+  const includeGoodbyeAdsRules = request.query.goodbyeads !== '0';
+
   const {homepage} = await readPkg();
 
   const {
@@ -48,9 +51,15 @@ export default async function handler(
       pupa(shadowrocketTemplate, {
         updated_at: pushed_at,
         update_url: homepage,
+        adway: includeAdwayRules
+          ? `DOMAIN-SET,${homepage}/api/adway,REJECT`
+          : '',
+        goodbyeads: includeGoodbyeAdsRules
+          ? `DOMAIN-SET,${homepage}/api/goodbyeads,REJECT`
+          : '',
         rules,
         rewrites,
         hostname,
-      }).replace('FINAL,DIRECT', 'FINAL,PROXY')
+      }).replace('FINAL,DIRECT', '')
     );
 }
