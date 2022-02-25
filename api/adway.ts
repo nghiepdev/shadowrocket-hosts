@@ -1,25 +1,26 @@
 import type {VercelRequest, VercelResponse} from '@vercel/node';
 
 import octokit from '../src/octokit';
+import {ADWAY_REPOSITORY} from '../src/config';
 
 export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
   const adwayResponse = await octokit.rest.repos.getContent({
-    owner: 'AdAway',
-    repo: 'adaway.github.io',
+    owner: ADWAY_REPOSITORY.owner,
+    repo: ADWAY_REPOSITORY.repo,
     mediaType: {
       format: 'raw',
     },
-    path: 'hosts.txt',
+    path: ADWAY_REPOSITORY.path,
   });
 
   const hostsText = adwayResponse.data.toString();
 
   const hosts = hostsText
     .match(/(?<=127\.0\.0\.1\s)[^\n]+/g)
-    ?.filter(host => host.includes('localhost') === false);
+    ?.filter(host => host !== ' localhost');
 
   response
     .setHeader('Content-Type', 'text/plain')
