@@ -1,4 +1,7 @@
 # Shadowrocket: {updated_at}
+# Project home page:
+# https://github.com/nghiepit/shadowrocket-hosts
+
 [General]
 bypass-system = true
 skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,captive.apple.com,*.akamaized.net

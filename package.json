@@ -2,7 +2,6 @@
   "name": "shadowrocket-hosts",
   "version": "0.1.0",
   "description": "Hosts block ads for Shadowrocket",
-  "main": "api/index.ts",
   "scripts": {
     "develop": "vercel dev",
     "deploy": "vercel deploy --prod"
@@ -25,7 +24,9 @@
   },
   "keywords": [
     "hosts vn",
-    "shadowrocket"
+    "shadowrocket",
+    "adway",
+    "goodbyeads"
   ],
   "author": "Nghiep <me@nghiepit.dev>",
   "license": "MIT"
