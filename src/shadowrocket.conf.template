@@ -13,7 +13,7 @@ prefer-ipv6 = false
 dns-fallback-system = true
 dns-direct-system = false
 icmp-auto-reply = true
-always-reject-url-rewrite = false
+always-reject-url-rewrite = true
 private-ip-answer = true
 dns-direct-fallback-proxy = true
 
