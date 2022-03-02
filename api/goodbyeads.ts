@@ -48,7 +48,7 @@ export default async function handler(
 
   const hosts = hostsText
     .match(/(?<=0\.0\.0\.0\s)[\w-\.]+/g)
-    ?.filter(host => host !== '0.0.0.0');
+    ?.filter(host => false === ['0.0.0.0'].includes(host));
 
   response
     .setHeader('Content-Type', 'text/plain')

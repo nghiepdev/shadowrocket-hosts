@@ -20,7 +20,7 @@ export default async function handler(
 
   const hosts = hostsText
     .match(/(?<=127\.0\.0\.1\s)[^\n]+/g)
-    ?.filter(host => host !== ' localhost');
+    ?.filter(host => false === [' localhost'].includes(host));
 
   response
     .setHeader('Content-Type', 'text/plain')
