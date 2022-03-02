@@ -35,7 +35,7 @@ export default async function handler(
   });
   const {sha: pathLevel2Sha} = level1Tree.find(({path}) => path === path2)!;
 
-  const adwayResponse = await octokit.rest.git.getBlob({
+  const adawayResponse = await octokit.rest.git.getBlob({
     owner: GOODBYE_ADS_REPOSITORY.owner,
     repo: GOODBYE_ADS_REPOSITORY.repo,
     mediaType: {
@@ -44,7 +44,7 @@ export default async function handler(
     file_sha: pathLevel2Sha!,
   });
 
-  const hostsText = adwayResponse.data.toString();
+  const hostsText = adawayResponse.data.toString();
 
   const hosts = hostsText
     .match(/(?<=0\.0\.0\.0\s)[\w-\.]+/g)

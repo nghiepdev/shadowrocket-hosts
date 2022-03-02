@@ -4,7 +4,7 @@ export const REPOSITORY_TEMPLATE = {
   path: 'option/hostsVN-shadowrocket.conf',
 } as const;
 
-export const ADWAY_REPOSITORY = {
+export const ADAWAY_REPOSITORY = {
   owner: 'AdAway',
   repo: 'adaway.github.io',
   path: 'hosts.txt',

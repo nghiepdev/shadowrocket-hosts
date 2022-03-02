@@ -17,8 +17,8 @@ export default async function handler(
   response: VercelResponse
 ) {
   const includeAbpvnRules = request.query.abpvn !== '0';
-  const includeIBlockadsRules = request.query.iblockads !== '0';
-  const includeAdwayRules = request.query.adway !== '0';
+  const includeIBlockAdsRules = request.query.iblockads !== '0';
+  const includeAdAwayRules = request.query.adaway !== '0';
   const includeGoodbyeAdsRules = request.query.goodbyeads !== '0';
 
   const {homepage} = await readPkg();
@@ -56,11 +56,11 @@ export default async function handler(
         abpvn: includeAbpvnRules
           ? `DOMAIN-SET,${homepage}/api/abpvn,REJECT`
           : '',
-        iblockads: includeIBlockadsRules
+        iblockads: includeIBlockAdsRules
           ? `DOMAIN-SET,${homepage}/api/iblockads,REJECT`
           : '',
-        adway: includeAdwayRules
-          ? `DOMAIN-SET,${homepage}/api/adway,REJECT`
+        adaway: includeAdAwayRules
+          ? `DOMAIN-SET,${homepage}/api/adaway,REJECT`
           : '',
         goodbyeads: includeGoodbyeAdsRules
           ? `DOMAIN-SET,${homepage}/api/goodbyeads,REJECT`
