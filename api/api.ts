@@ -16,6 +16,8 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
+  const includeAbpvnRules = request.query.abpvn !== '0';
+  const includeIBlockadsRules = request.query.iblockads !== '0';
   const includeAdwayRules = request.query.adway !== '0';
   const includeGoodbyeAdsRules = request.query.goodbyeads !== '0';
 
@@ -51,6 +53,12 @@ export default async function handler(
       pupa(shadowrocketTemplate, {
         updated_at: pushed_at,
         update_url: homepage,
+        abpvn: includeAbpvnRules
+          ? `DOMAIN-SET,${homepage}/api/abpvn,REJECT`
+          : '',
+        iblockads: includeIBlockadsRules
+          ? `DOMAIN-SET,${homepage}/api/iblockads,REJECT`
+          : '',
         adway: includeAdwayRules
           ? `DOMAIN-SET,${homepage}/api/adway,REJECT`
           : '',

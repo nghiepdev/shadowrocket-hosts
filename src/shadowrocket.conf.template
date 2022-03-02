@@ -19,6 +19,8 @@ dns-direct-fallback-proxy = true
 
 [Rule]
 {rules}
+{abpvn}
+{iblockads}
 {adway}
 {goodbyeads}
 FINAL,PROXY
