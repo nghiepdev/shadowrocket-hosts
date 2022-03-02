@@ -12,6 +12,7 @@
     "read-pkg": "^5.0.0"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.6.1",
     "vercel": "^24.0.0"
   },
   "homepage": "https://shadowrocket-hosts.vercel.app",
