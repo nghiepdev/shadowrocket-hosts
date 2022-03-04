@@ -16,10 +16,11 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  const includeAbpvnRules = request.query.abpvn !== '0';
-  const includeIBlockAdsRules = request.query.iblockads !== '0';
-  const includeAdAwayRules = request.query.adaway !== '0';
-  const includeGoodbyeAdsRules = request.query.goodbyeads !== '0';
+  const isProxyFallback = request.query.fallback === 'proxy';
+  const includeAbpvnHosts = request.query.abpvn !== '0';
+  const includeIBlockAdsHosts = request.query.iblockads !== '0';
+  const includeAdAwayHosts = request.query.adaway !== '0';
+  const includeGoodbyeAdsHosts = request.query.goodbyeads !== '0';
 
   const {homepage} = await readPkg();
 
@@ -41,7 +42,7 @@ export default async function handler(
 
   const hostsVN = hostsVNResponse.data.toString();
 
-  const [rules] = hostsVN.match(/(?<=\[Rule\]\s).*(?=\[Host)/s) ?? [];
+  const [rules] = hostsVN.match(/(?<=\[Rule\]\s).*(?=FINAL)/s) ?? [];
   const [rewrites] =
     hostsVN.match(/(?<=\[URL\sRewrite\]\s).*(?=\[MITM)/s) ?? [];
   const [hostname] = hostsVN.match(/(?<=hostname\s=\s).*/) ?? [];
@@ -53,21 +54,22 @@ export default async function handler(
       pupa(shadowrocketTemplate, {
         updated_at: pushed_at,
         update_url: homepage,
-        abpvn: includeAbpvnRules
+        abpvn: includeAbpvnHosts
           ? `DOMAIN-SET,${homepage}/api/abpvn,REJECT`
           : '',
-        iblockads: includeIBlockAdsRules
+        iblockads: includeIBlockAdsHosts
           ? `DOMAIN-SET,${homepage}/api/iblockads,REJECT`
           : '',
-        adaway: includeAdAwayRules
+        adaway: includeAdAwayHosts
           ? `DOMAIN-SET,${homepage}/api/adaway,REJECT`
           : '',
-        goodbyeads: includeGoodbyeAdsRules
+        goodbyeads: includeGoodbyeAdsHosts
           ? `DOMAIN-SET,${homepage}/api/goodbyeads,REJECT`
           : '',
         rules,
+        fallback: isProxyFallback ? 'FINAL,PROXY' : 'FINAL,DIRECT',
         rewrites,
         hostname,
-      }).replace('FINAL,DIRECT', '')
+      })
     );
 }

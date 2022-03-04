@@ -23,7 +23,7 @@ dns-direct-fallback-proxy = true
 {iblockads}
 {adaway}
 {goodbyeads}
-FINAL,PROXY
+{fallback}
 
 [Host]
 localhost = 127.0.0.1

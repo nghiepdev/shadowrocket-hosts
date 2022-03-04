@@ -14,17 +14,23 @@
 
 Import hosts file
 
-```bash
-https://shadowrocket-hosts.vercel.app
-```
+<pre>
+<a href="https://shadowrocket-hosts.vercel.app">https://shadowrocket-hosts.vercel.app</a>
+</pre>
 
 See more step-by-step instructions [here](https://github.com/bigdargon/hostsVN/wiki/Shadowrocket)
 
 By default hosts file includes all sources of hosts, for example to excludes `abpvn`, `iblockads`
 
-```bash
-https://shadowrocket-hosts.vercel.app?abpvn=0&iblockads=0
-```
+<pre>
+<a href="https://shadowrocket-hosts.vercel.app?abpvn=0&iblockads=0">https://shadowrocket-hosts.vercel.app?abpvn=0&iblockads=0</a>
+</pre>
+
+If you use VPN Proxy or V2Ray such as VMess, VLess,... then change the fallback behavior to proxy value
+
+<pre>
+<a href="https://shadowrocket-hosts.vercel.app?fallback=proxy">https://shadowrocket-hosts.vercel.app?fallback=proxy</a>
+</pre>
 
 ## License
 
