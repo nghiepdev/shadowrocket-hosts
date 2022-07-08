@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Hosts block ads for Shadowrocket",
   "scripts": {
-    "develop": "vercel dev",
-    "deploy": "vercel deploy --prod"
+    "develop": "npx vercel dev",
+    "deploy": "npx vercel deploy --prod"
   },
   "dependencies": {
     "octokit": "^1.7.1",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.1",
-    "vercel": "^24.0.0"
+    "@vercel/node": "^2.4.1"
   },
   "homepage": "https://shadowrocket-hosts.vercel.app",
   "repository": {
@@ -31,6 +31,6 @@
     "adaway",
     "goodbyeads"
   ],
-  "author": "Nghiep <me@nghiepit.dev>",
+  "author": "Nghiep <me@nghiep.dev>",
   "license": "MIT"
 }
